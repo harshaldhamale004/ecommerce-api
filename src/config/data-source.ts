@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { DataSource } from "typeorm";
 import { CategoryEntity } from "../entities/Category.js";
+import { ProductEntity } from "../entities/Product.js";
 
 const requireEnv = (name: string): string => {
   const value = process.env[name];
@@ -16,6 +17,6 @@ export const AppDataSource = new DataSource({
   password: requireEnv("DB_PASS"),
   database: requireEnv("DB_NAME"),
   synchronize: true, // creates/updates tables from entities (workshop only)
-  entities: [CategoryEntity],
+  entities: [CategoryEntity, ProductEntity],
   options: { encrypt: false, trustServerCertificate: true },
 });
